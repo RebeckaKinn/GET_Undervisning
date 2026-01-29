@@ -2,7 +2,7 @@ let password = '';
 let username = '';
 
 let correctPassword = '123abc';
-let correctUsername = 'Rebecka';
+let correctUsername = 'Admin';
 
 let message = '';
 
