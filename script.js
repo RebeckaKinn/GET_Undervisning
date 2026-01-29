@@ -19,7 +19,6 @@ function updateView(){
             <button onclick="logIn()">Logg inn</button>
             <p>${message}</p>
         </div>
-    
     `;
 }
 
