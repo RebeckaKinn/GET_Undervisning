@@ -10,10 +10,10 @@ updateView();
 function updateView(){
     document.getElementById('app').innerHTML = /*HTML*/`
         <div>
-            <label>Brukernavn</label>
+            <span>Brukernavn</span>
             <input onchange="saveUsername(this.value)" type="text" placeholder="Skriv inn brukernavn" value=${username}>
 
-            <label>Passord</label>
+            <span>Passord</span>
             <input onchange="savePassword(this.value)" type="password" placeholder="Skriv inn passord" value=${password}> 
 
             <button onclick="logIn()">Logg inn</button>
