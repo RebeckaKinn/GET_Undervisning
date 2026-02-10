@@ -1,0 +1,25 @@
+body{
+    color: aliceblue;
+    background-color: rgb(55, 55, 55);
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
+}
+
+header{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    gap: 1rem;
+}
+
+button{
+    background-color: orange;
+    border-radius: 5rem; 
+    padding: 5px 10px;
+}
+
+header button{
+    background-color: transparent;
+    color: aliceblue;
+}
