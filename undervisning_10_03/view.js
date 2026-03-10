@@ -4,5 +4,9 @@ Mer om objekter! :D
 - Lage en updateView-navigasjon med bruk av modellen
 - Login med bruk av modellen
 
+- Lagre id til den som er logget inn i modellen
+- .find / loop til å finne hvem som er logget inn
+- CreateUser 
+
 
 */
