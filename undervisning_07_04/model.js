@@ -1,14 +1,15 @@
 const model = {
   app: {
     app: document.getElementById("app"),
-    currentPage: "mainPage",
-    loggedInId: null,
+    currentPage: "quiz",
+    loggedInId: 1,
   },
   viewState: {
     logIn: {
       email: null,
       password: null,
     },
+    currentQuizId: null,
   },
   data: {
     users: [
@@ -36,11 +37,15 @@ const model = {
         name: "superQuiz",
         questions: [
           {
-            question: null,
+            question: "Rabbits can't vomit.",
             alternatives: [
               {
-                text: "",
+                text: "True",
                 isCorrect: false,
+              },
+              {
+                text: "False",
+                isCorrect: true,
               },
             ],
           },
