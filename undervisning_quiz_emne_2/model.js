@@ -10,7 +10,11 @@ const model = {
       password: null,
     },
     currentQuizId: null,
+    answers:[],
+    points:0
   },
+
+
   data: {
     users: [
       {
@@ -37,15 +41,15 @@ const model = {
         name: "superQuiz",
         questions: [
           {
-            question: "Rabbits can't vomit.",
+            question: "The shotgun appears in every numbered Resident Evil game.",
             alternatives: [
               {
                 text: "True",
-                isCorrect: false,
+                isCorrect: true,
               },
               {
                 text: "False",
-                isCorrect: true,
+                isCorrect: false,
               },
             ],
           },
