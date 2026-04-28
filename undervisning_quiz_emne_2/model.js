@@ -10,10 +10,16 @@ const model = {
       password: null,
     },
     currentQuizId: null,
-    answers:[],
-    points:0
+    answers: [],
+    points: 0,
+    leaderboard: {
+      id: null,
+      userId: null,
+      quizId: null,
+      score: null,
+      time: null,
+    },
   },
-
 
   data: {
     users: [
@@ -30,7 +36,7 @@ const model = {
         id: 3,
         userId: 1,
         quizId: 2,
-        score: null,
+        score: 2,
         time: null,
       },
     ],
@@ -41,7 +47,9 @@ const model = {
         name: "superQuiz",
         questions: [
           {
-            question: "The shotgun appears in every numbered Resident Evil game.",
+            id: 1,
+            question:
+              "The shotgun appears in every numbered Resident Evil game.",
             alternatives: [
               {
                 text: "True",
@@ -50,6 +58,20 @@ const model = {
               {
                 text: "False",
                 isCorrect: false,
+              },
+            ],
+          },
+          {
+            id: 2,
+            question: "A tiger has black dots.",
+            alternatives: [
+              {
+                text: "True",
+                isCorrect: false,
+              },
+              {
+                text: "False",
+                isCorrect: true,
               },
             ],
           },

@@ -21,50 +21,74 @@ function activeQuizView() {
     <div>
         <h3>${question.question}</h3>
         <div>
-            ${question.alternatives.map((element) => /*HTML*/ `<button onclick="setActive(this)">${element.text}</button>`).join(" ")}
+            ${question.alternatives
+              .map(
+                (element) => /*HTML*/ `
+                <input type="radio" id="${element.text}${question.id}" name=${question.question} hidden>
+                <label for="${element.text}${question.id}" onclick="setActive(${element.isCorrect}, ${question.id})" class="option">
+                  ${element.text}
+                </label>
+                `,
+              )
+              .join(" ")}
         </div>
         </div>
         `;
   }
   return /*HTML*/ `
       <h1>${quiz.name}</h1>
-      ${model.viewState.points == 0 ? "" : model.viewState.points}
+      ${model.viewState.answers.length == 0 ? "" : model.viewState.points}
       <section>${html}</section>
       <button onclick="submitAnswer()">Submit</button>
     `;
 }
 
-function setActive(element) {
-  let answer = element.innerText;
-  element.classList.add("green");
-  model.viewState.answers.push(answer);
+function setActive(element, id) {
+  for (let i = 0; i < model.viewState.answers.length; i++) {
+    if (model.viewState.answers[i].questionId == id) {
+      model.viewState.answers.splice(i, 1);
+    }
+  }
+  model.viewState.answers.push({
+    questionId: id,
+    isCorrect: element,
+  });
 }
 
 function submitAnswer() {
-  let currentQuiz = returnActiveQuiz();
-  let correctAnswers = []
-  let myAnswers = model.viewState.answers;
-
- currentQuiz.questions.forEach((element) => {
-    element.alternatives.forEach((alt) => {
-      if (alt.isCorrect == true) {
-        correctAnswers.push(alt)
-      }
-    });
-  });
-
-  for(let elem of correctAnswers){
-    for(let answer of myAnswers){
-      if(elem.text == answer){
-        model.viewState.points++
-      }
+  for (let answer of model.viewState.answers) {
+    if (answer.isCorrect) {
+      model.viewState.points++;
     }
   }
+
+  model.data.leaderboard.push({
+    id: Math.floor(Math.random() * 100),
+    userId: model.app.loggedInId,
+    quizId: returnActiveQuiz().id,
+    score: model.viewState.points,
+    time: null,
+  });
+
+  console.log(model.data.leaderboard);
+
+  // let correctAnswers = [];
+  // let myAnswers = model.viewState.answers;
+
+  // currentQuiz.questions.forEach((element) => {
+  //   element.alternatives.forEach((alt) => {
+  //     if (alt.isCorrect == true) {
+  //       correctAnswers.push(alt);
+  //     }
+  //   });
+  // });
+
+  // for (let elem of correctAnswers) {
+  //   for (let answer of myAnswers) {
+  //     if (elem.text == answer) {
+  //       model.viewState.points++;
+  //     }
+  //   }
+  // }
   updateView();
 }
-
-
-
-/*
-    - Lage quiz logikken
-*/
